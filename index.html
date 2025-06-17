@@ -38,51 +38,7 @@
     @keyframes fadeOut {
       to { opacity: 0; visibility: hidden; }
     }
-
-
-    <script>
-  if (window.innerWidth <= 768) {
-    document.body.innerHTML = `
-      <style>
-        body {
-          margin: 0;
-          background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
-          color: #fff;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          overflow: hidden;
-        }
-        .message-box {
-          background: #222;
-          padding: 2rem;
-          border: 2px dashed #ff4444;
-          border-radius: 20px;
-          max-width: 90%;
-          box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
-        }
-        .emoji {
-          font-size: 3rem;
-        }
-      </style>
-      <div class="message-box">
-        <div class="emoji">🚫📱</div>
-        <h2>Mobile Users Not Allowed!</h2>
-        <p>This exclusive website is part of the <strong>Desktop-Only Club™</strong>.</p>
-        <p>Please dust off your laptop or desktop and try again like it's 2005. 😎</p>
-        <p>We promise it's worth it... or at least mildly interesting.</p>
-        <br>
-        <p style="font-size:0.8rem; color:#888;">(We still love you, mobile peeps 💖... just not here.)</p>
-      </div>
-    `;
-  }
-</script>
-
-    
+  
     header {
       background: #111;
       padding: 20px 0;
