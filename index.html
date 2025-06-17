@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Weeknd - XO</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+  <link rel="icon" type="jpg" href="assets/xo-logo.jpg">
+
+   <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+  <style>
+    body {
+      font-size: 18px ;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #f9f7f7;
+    }
+    
+     #preloader {
+      position: fixed; width: 100%; height: 100%;
+      background: black; z-index: 9999;
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeOut 4s forwards 4s;
+    }
+
+    #preloader img {
+      width: 150px;
+      animation: beat 2s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    header {
+      background: #111;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 0 10px #ff0040;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+    }
+   
+   
+    .xo-logo {
+      height: 60px;
+      filter: drop-shadow(0 0 10px #ff0040);
+    }
+   
+    nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ff0040;
+    }
+    .hero {
+      position: relative;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    
+    .hero img {
+      width: 90%;
+      max-width: 1200px;
+      border-radius: 20px;
+      box-shadow: 0 0 50px #ff0040;
+    }
+    .hero-content {
+      margin-top: 30px;
+    }
+    .hero-content h2 {
+      font-size: 36px;
+      color: #ff0040;
+    }
+    .hero-content p {
+      font-size: 30px;
+      max-width: 800px;
+      margin: 10px auto;
+      color: #aaa;
+    }
+     .glider-contain {
+      width: 90%;
+      margin: 100px auto;
+    }
+    
+    .glider img {
+     width: 100%;
+     height: 400px;
+     object-fit: cover;
+     border-radius: 15px;
+     transition: transform 0.5s;
+    }
+    
+    .glider img:hover {
+    transform: scale(1.05) rotateY(15deg);
+    }
+    .glider-prev, .glider-next {
+     background: #ff4b2b;
+     border: none;
+     color: #fff;
+     padding: 15px 20px;
+     border-radius: 50%;
+     font-size: 20px;
+     cursor: pointer;
+     margin: 0 10px;
+    }
+
+    .section {
+      padding: 80px 50px;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #ff0040;
+    }
+    .section p {
+      font-size: 18px;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    .music-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+    .music-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 0 15px rgba(255, 0, 64, 0.5);
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+    .music-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px #ff0040;
+    }
+    .music-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #111;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="background-audio" autoplay loop muted>
+<source src="assets/The Weeknd - House Of Balloons _ Glass Table Girls.mp3" type="audio/mp3">
+</audio>
+
+<button id="audio-toggle" style="
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  z-index: 1000;
+  background-color: #ff4b2b;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+">
+🔇
+</button>
+
+<div id="preloader">
+  <img src="assets/xo-logo.jpg" alt="XO Logo">
+</div>
+
+<header>
+  <div class="header-inner">
+    <img src="assets/xo-logo.jpg" alt="XO Logo" class="xo-logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="albums.html">Albums</a>
+      <a href="awards.html">Awards</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+ <h1>THE WEEKND</h1>
+ <a href="https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ" target="_blank">
+ <img src="assets/weeknd.jpg" alt="The Weeknd">
+ <br><br><br><br>
+ <p>CLICK THIS IMAGE TO CHECK OUT MORE OF THIS SONGS</p>
+ </a>
+  
+ <div class="glider-contain">
+    <button class="glider-prev">«</button>
+    <div class="glider">
+      <a href ="https://youtu.be/5EpyN_6dqyk?si=YDixJDkiWYgj30xU" target="_blank">
+      <div><img src="assets/Timeless.jpeg" alt="timeless"></div>
+      </a>
+      <a href ="https://youtu.be/M4ZoCHID9GI?si=EPAe40nvR24QwCCF" target="_blank">
+      <div><img src="assets/CO.jpg" alt="Call out my name"></div>
+      </a>
+      <a href ="https://youtu.be/w8eFZoOcYKc?si=X_twjDl-RTzHd48d" target="_blank">
+      <div><img src="assets/DAWN_FMM.jpg" alt="Dawn FM"></div>
+      </a>
+      <a href ="https://youtu.be/zEqLXGE_re4?si=4KIs0MYE5ufgDtoe" target="_blank">
+      <div><img src="assets/saoo.jpg" alt="SAO PAULO"></div>
+      </a>
+      <a href ="https://youtu.be/zEqLXGE_re4?si=4KIs0MYE5ufgDtoe" target="_blank">
+      <div><img src="assets/starboy.jpg" alt="Starboy"></div>
+      </a>
+      <a href ="https://youtu.be/zEqLXGE_re4?si=4KIs0MYE5ufgDtoe" target="_blank">
+      <div><img src="assets/For you.jpg" alt="Die For You"></div>
+      </a>
+      <a href ="https://youtu.be/zEqLXGE_re4?si=4KIs0MYE5ufgDtoe" target="_blank">
+      <div><img src="assets/Blinding_Lights.png" alt="Blinding Lights"></div>
+      </a>
+      <a href ="https://youtu.be/zEqLXGE_re4?si=4KIs0MYE5ufgDtoe" target="_blank">
+      <div><img src="assets/The Hills.jpeg" alt="THE HILLS"></div>
+      </a>
+    </div>
+    <button class="glider-next">»</button>
+    <div role="tablist" class="dots"></div>
+  </div>
+
+
+  <spline-viewer 
+  url="https://prod.spline.design/PBQQBw8bfXDhBo7w/scene.splinecode" 
+  events-target="global"
+  style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+</spline-viewer>
+
+ <div class="hero-content">
+    <h1>WEEKND THE GLOBAL STAR & TOP ARTIST</h1>
+    <h2>Blinding Lights to Global Icon</h2>
+    <p>Redefining R&B, Pop, and Soul with record-breaking hits.</p>
+  </div>
+</section>
+<br><br>
+<pre>
+                                       
+                                                                                                     
+</pre>
+<section class="hero">
+   <a href="https://xo.store/?utm_source=Original&utm_campaign=TheWeeknd20240906&utm_medium=direct&utm_referrer=direct&utm_board=republic-records&utm_country=US&utm_linkurl=theweeknd.co%2Fxostore&lf=681c2a655662917d897ffee4c686449c" target="_blank">
+  <img src="assets/my_dear_melancholy.jpg" alt="Abel">
+   </a>
+  <div class="hero-content">
+    <h1>Click Here to Check Out MUSIC & MERCH</h1>
+    <h1>  Blinding Lights to Global Icon</h1>
+    <p style ="color:gold;">STAR</p>
+    
+    <pre>
+      
+     <h1 style="background-color:rgb(247, 247, 8); color:rgb(11, 1, 1);">Grammy Award</h1>
+      
+      4 Wins (including Best Urban Contemporary Album and Best R&B Performance)
+      
+      Notably snubbed in 2021 despite global success, leading to public controversy.
+      
+      <h1 style="background-color:rgb(0, 0, 0); color:rgb(243, 243, 6);">Billboard Music Awards</h1>
+      Over 22 wins, including Top Artist, Top Hot 100 Artist, and Top Streaming Song.
+      <h1 style="background-color:rgb(0, 0, 0); color:rgb(243, 243, 6);">Juno Awards (Canada)</h1>
+      Over 20 wins, including Artist of the Year and Album of the Year.
+      
+      MTV VMAs, American Music Awards, and BET Awards: Multiple wins across all.
+      <h1 style="background-color:rgb(247, 247, 8); color:rgb(4, 3, 1);">Guinness World Records</h1>
+      Named the most popular artist in the world (2023) based on Spotify streams and monthly listeners.
+      
+      First artist to surpass 100 million monthly listeners on Spotify.
+  </div>
+</section>
+
+<section class="section">
+  <h2>About The Weeknd</h2>
+  <img src="assets\the-weeknd-wallpaper-preview.jpg" alt="Abel">
+  <pre>
+
+
+    Full Name: Abel Makkonen Tesfaye
+
+    Stage Name: The Weeknd
+
+    Date of Birth: February 16, 1990
+
+    Origin: Toronto, Ontario, Canada
+    
+    Ethnicity: Ethiopian (parents emigrated from Ethiopia)
+    
+    Genres: R&B, Pop, Hip-Hop, Alternative R&B
+</pre>
+<br><br>
+  <p>
+    The Weeknd, born Abel Tesfaye, is a Canadian singer, songwriter, and record producer.
+    Known for his distinctive sound blending R&B, pop, and alternative genres, he has dominated global charts.
+    His albums, such as "Starboy", "After Hours", and "Dawn FM", showcase his range from dark ballads to dancefloor anthems.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Popular Hits</h2>
+  <div class="music-gallery">
+    <div class="music-card">
+      <a href ="https://youtu.be/fHI8X4OXluQ?si=ukfeDBmqYurvuhfO" target ="_blank">
+      <img src="assets/Blinding_lights.png" alt="Blinding Lights">
+      </a>
+      <h3>Blinding Lights</h3>
+      <p>"Blinding Lights" by The Weeknd has achieved numerous records, most notably becoming the longest-running song on the Billboard Hot 100 chart, surpassing the previous record held by Imagine Dragons' "Radioactive". It also holds the record for the most weeks within the top 5, top 10, and top 40 of the Hot 100 chart.</p>
+    </div>
+    <div class="music-card">
+      <a href ="https://youtu.be/34Na4j8AVgA?si=vDnY2cKTI_sdPIxb" target="_blank">
+      <img src="assets/starboy.jpg" alt="Starboy">
+      </a>
+      <h3>Starboy</h3>
+      <p>Collaborating with Daft Punk, redefining modern electropop "Starboy" debuted at number one on the Billboard 200 chart in the United States. </p>
+    </div>
+    <div class="music-card">
+      <a href ="https://youtu.be/M4ZoCHID9GI?si=C0yh3IW7Cua3krVN" target="_blank">
+      <img src="assets/CO.jpg" alt="Call Out My Name">
+      </a>
+      <h3>Call Out My Name</h3>
+      <p>Emotional masterpiece from My Dear Melancholy EP, A popular and Genric HIT , #1 In Spotify Top 200 Global While Releasing .</p>
+    </div>
+    <div class="music-card">
+      <a href ="https://youtu.be/5EpyN_6dqyk?si=Ie7Y8-VLxoCrB_la" target="_blank">
+      <img src="assets/Timeless.jpeg" alt="Timeless">
+      </a>
+      <h3>Timeless</h3>
+      <p>Collaborating with Daft Punk, redefining modern electropop "Starboy" debuted at number one on the Billboard 200 chart in the United States. </p>
+    </div>
+    <div class="music-card">
+      <a href ="https://youtu.be/YQ-qToZUybM?si=vnhFtIY-6vfD26jl" target="_blank">
+      <img src="assets/For you.jpg" alt="Die For you">
+      </a>
+      <h3>Die for You </h3>
+      <p>Collaborating with Daft Punk, redefining modern electropop "Starboy" debuted at number one on the Billboard 200 chart in the United States. </p>
+    </div>
+    <div class="music-card">
+       <a href ="https://youtu.be/zEqLXGE_re4?si=4KIs0MYE5ufgDtoe" target="_blank">
+      <img src="assets/saoo.jpg" alt="Sao paulo">
+      </a>
+      <h3>Sao Paulo  </h3>
+      <p>Collaborating with Daft Punk, redefining modern electropop "Starboy" debuted at number one on the Billboard 200 chart in the United States. </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>The Weeknd  Project</p>
+  <p>KIYOTAKA</p>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('preloader').style.display = 'none';
+      }, 1000);
+    }, 4000); // 4 seconds
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+
+  <script>
+    new Glider(document.querySelector('.glider'), {
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      draggable: true,
+      dots: '.dots',
+      arrows: {
+        prev: '.glider-prev',
+        next: '.glider-next'
+      }
+    });
+  </script>
+
+  <script>
+  const audio = document.getElementById("background-audio");
+  const button = document.getElementById("audio-toggle");
+
+  button.addEventListener("click", () => {
+    if (audio.muted) {
+      audio.muted = false;
+      button.textContent = "🔊";
+    } else {
+      audio.muted = true;
+      button.textContent = "🔇";
+    }
+  });
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Weeknd - XO</title>
+  <link rel="icon" type="jpg" href="assets/xo-logo.jpg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #preloader {
+      position: fixed; width: 100%; height: 100%;
+      background: black; z-index: 9999;
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeOut 4s forwards 4s;
+    }
+
+    #preloader img {
+      width: 150px;
+      animation: beat 2s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: #111;
+      box-shadow: 0 0 10px #ff0040;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header img {
+      height: 60px;
+      filter: drop-shadow(0 0 10px #ff0040);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover { color: #ff0040; }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero img {
+      width: 80%; max-width: 800px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #ff0040;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      color: #ff0040;
+      margin: 30px 0 10px;
+    }
+
+    .hero p {
+      color: #bbb;
+      font-size: 22px;
+      margin-bottom: 40px;
+    }
+
+    .glider-contain {
+      margin: 60px auto;
+      width: 90%;
+    }
+
+    .glider img {
+      width: 100%; height: 300px;
+      border-radius: 15px;
+      transition: transform 0.5s;
+    }
+
+    .glider img:hover {
+      transform: scale(1.05) rotateY(10deg);
+    }
+
+    .glider-prev, .glider-next {
+      background: #ff0040;
+      border: none;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .about {
+      padding: 50px 20px;
+      text-align: center;
+      background: linear-gradient(to bottom, #111, #000);
+    }
+
+    .about h2 {
+      color: #ff0040;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 20px;
+      background: #111;
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="preloader">
+  <img src="assets/xo-logo.jpg" alt="XO">
+</div>
+
+<header>
+  <img src="assets/xo-logo.jpg" alt="XO Logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="albums.html">Albums</a>
+    <a href="awards.html">Awards</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>THE WEEKND</h1>
+  <p>Blinding Lights to Global Icon</p>
+  <img src="assets/weeknd.jpg" alt="The Weeknd">
+</section>
+
+<div class="glider-contain">
+  <button class="glider-prev">«</button>
+  <div class="glider">
+    <div><img src="assets/Timeless.jpeg"></div>
+    <div><img src="assets/CO.jpg"></div>
+    <div><img src="assets/DAWN_FMM.jpg"></div>
+    <div><img src="assets/saoo.jpg"></div>
+    <div><img src="assets/starboy.jpg"></div>
+  </div>
+  <button class="glider-next">»</button>
+</div>
+
+<section class="about">
+  <h2>About The Weeknd</h2>
+  <p>Abel Tesfaye known as The Weeknd is a Canadian global superstar redefining R&B, Pop, and Soul with record-breaking hits worldwide. First artist to surpass 100M Spotify listeners.</p>
+</section>
+
+<footer>
+  <p>© 2025 The Weeknd Project — ADITHYAN</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+<script>
+  new Glider(document.querySelector('.glider'), {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    draggable: true,
+    dots: '.dots',
+    arrows: {
+      prev: '.glider-prev',
+      next: '.glider-next'
+    }
+  });
+</script>
+
+</body>
+</html>
