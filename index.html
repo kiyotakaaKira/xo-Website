@@ -226,6 +226,23 @@
   <source src="assets/The Weeknd - House Of Balloons _ Glass Table Girls.mp3" type="audio/mpeg">
 </audio>
 
+  
+  <script>
+  const audio = document.getElementById('bg-music');
+  const muteBtn = document.getElementById('mute-btn');
+
+  // Autoplay trigger on first user interaction
+  window.addEventListener('click', () => {
+    audio.play().catch(e => console.log('Autoplay blocked:', e));
+  }, { once: true });
+
+  // Toggle mute
+  muteBtn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    muteBtn.textContent = audio.muted ? '🔊 Unmute' : '🔇 Mute';
+  });
+  </script>
+
 
 <button id="audio-toggle" style="
   position: fixed;
