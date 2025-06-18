@@ -211,9 +211,19 @@
 </head>
 <body>
 
-<audio id="background-audio" autoplay loop muted>
-<source src="assets/The Weeknd - House Of Balloons _ Glass Table Girls.mp3" type="audio/mp3">
+<script>
+  window.addEventListener('click', () => {
+    const audio = document.getElementById('bg-music');
+    if (audio) {
+      audio.play();
+    }
+  }, { once: true });
+</script>
+
+<audio id="bg-music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
+
 
 <button id="audio-toggle" style="
   position: fixed;
