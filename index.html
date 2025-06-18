@@ -206,19 +206,21 @@
     }
       
   }
+
 </style>
   </style>
 </head>
 <body>
 
-<script>
-  window.addEventListener('click', () => {
-    const audio = document.getElementById('bg-music');
-    if (audio) {
-      audio.play();
-    }
-  }, { once: true });
-</script>
+
+  <script>
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('bg-music');
+      if (audio) {
+        audio.play();
+      }
+    }, { once: true });
+  </script>
 
 <audio id="bg-music" loop>
   <source src="assets/The Weeknd - House Of Balloons _ Glass Table Girls.mp3" type="audio/mpeg">
